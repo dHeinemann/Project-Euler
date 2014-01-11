@@ -1,25 +1,13 @@
 #!/usr/bin/perl
 use warnings;
 use strict;
+use List::Util qw(sum);
 
-my @matches;
-my $sum;
-for (my $i = 1; $i < 1000; $i++)
-{
-    print("Testing $i...\n");
-    if ($i % 3 == 0)
-    {
-        print("  $i is divisible by 3.\n");
-        $sum += $i;
-        push(@matches, $i);
-    }
-    elsif ($i % 5 == 0)
-    {
-        print("  $i is divisible by 5.\n");
-        $sum += $i;
-        push(@matches, $i);
-    }
-}
-print("\n");
-print("Matches: @matches\n\n");
+# PROBLEM 1
+# If we list all the natural numbers below 10 that are multiples of 3 or
+# 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+#
+# Find the sum of all the multiples of 3 or 5 below 1000.
+
+my $sum = sum(grep { $_ % 3 == 0 or $_ % 5 == 0 } 1 .. 1000);
 print("Sum: $sum\n");
